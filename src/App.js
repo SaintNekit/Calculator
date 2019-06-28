@@ -8,20 +8,37 @@ class App extends React.Component {
       value: '0',
       currentNumber: '',
       prevNumber: '',
-      operation:''
+      operation:'',
+      someOperation: true
     }
   }
 
   addValue = (value) => {
-    this.setState({
-      value: this.state.value === '0'? String(value) : this.state.value + value
-    })
+    if(this.state.someOperation === true) {
+      this.setState({
+        value: this.state.value === '0' ? String(value) : this.state.value + value
+      })
+    }
+    else {
+      this.setState({
+        value: String(value),
+        someOperation: true
+      })
+    }
+    
   }
 
   addDot = (value) => {
     if(this.state.value.indexOf('.') === -1) {
       this.setState({
-        value: this.state.value + value
+        value: this.state.value + value,
+        someOperation: true
+      })
+    }
+    if(this.state.someOperation === false) {
+      this.setState({
+        value: '0' + value,
+        someOperation: true
       })
     }
   }
@@ -45,6 +62,39 @@ class App extends React.Component {
     this.setState({
       value: this.state.value / 100
     })
+  }
+
+ operations = (value) => {
+    this.setState({
+      operation: value,
+      someOperation: false,
+      prevNumber: this.state.value
+    })
+ }
+
+  evaluate = () => {
+    this.state.currentNumber = this.state.value;
+
+    if(this.state.operation === '-') {
+      this.setState({
+        value: ((parseFloat(this.state.prevNumber) * 10) - parseFloat(this.state.currentNumber) * 10) / 10
+      })
+    }
+    if(this.state.operation === '+') {
+      this.setState({
+        value: ((parseFloat(this.state.prevNumber) * 10) + parseFloat(this.state.currentNumber) * 10) / 10
+      })
+    }
+    if(this.state.operation === '/') {
+      this.setState({
+        value: parseFloat(this.state.prevNumber) / parseFloat(this.state.currentNumber)
+      })
+    }
+    if(this.state.operation === '*') {
+      this.setState({
+        value: parseFloat(this.state.prevNumber) * parseFloat(this.state.currentNumber)
+      })
+    }
   }
 
 
@@ -72,11 +122,11 @@ class App extends React.Component {
             <button className='key' onClick = {() => this.addValue(9)}>9</button>
           </div>
           <div className='functional-buttons'>
-            <button className='key key-fn'>/</button>
-            <button className='key key-fn'>*</button>
-            <button className='key key-fn'>-</button>
-            <button className='key key-fn'>+</button>
-            <button className='key key-fn'>=</button>
+            <button className='key key-fn' onClick = {() => this.operations('/')}>/</button>
+            <button className='key key-fn' onClick = {() => this.operations('*')}>*</button>
+            <button className='key key-fn' onClick = {() => this.operations('-')}>-</button>
+            <button className='key key-fn' onClick = {() => this.operations('+')}>+</button>
+            <button className='key key-fn' onClick = {() => this.evaluate()}>=</button>
           </div>
         </div>
       </div>
