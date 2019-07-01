@@ -1,4 +1,6 @@
 import React from 'react';
+import Input from '../src/components/input';
+import Button from '../src/components/numbers';
 
 class App extends React.Component {
   constructor(props) {
@@ -101,7 +103,7 @@ class App extends React.Component {
   render() {
     return (
       <div className='calculator'>
-        <div className='input'>{this.state.value}</div>
+        <Input input={this.state.value}></Input>
         <div className='calculator-keypad'>
           <div className='upper-row'>
             <button className='key' onClick = {() => this.clear()}>AC</button>
