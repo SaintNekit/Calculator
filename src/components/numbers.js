@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Button = (props) => (
-    <div className='key' onClick={() => props.onClick()}>{props.children}</div>
+    <button className='key' onClick={() => props.onClick()}>{props.children}</button>
 )
 
 export default Button;

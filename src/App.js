@@ -106,22 +106,22 @@ class App extends React.Component {
         <Input input={this.state.value}></Input>
         <div className='calculator-keypad'>
           <div className='upper-row'>
-            <button className='key' onClick = {() => this.clear()}>AC</button>
-            <button className='key' onClick = {() => this.addMinus()}>±</button>
-            <button className='key' onClick = {() => this.persentage()}>%</button>
+            <Button onClick = {() => this.clear()}>AC</Button>
+            <Button onClick = {() => this.addMinus()}>±</Button>
+            <Button onClick = {() => this.persentage()}>%</Button>
           </div>
           <div className='keypad'>
             <button className='key key-0' onClick = {() => this.addValue(0)}>0</button>
             <button className='key key-dot' onClick = {() => this.addDot('.')}>.</button>
-            <button className='key' onClick = {() => this.addValue(1)}>1</button>
-            <button className='key' onClick = {() => this.addValue(2)}>2</button>
-            <button className='key' onClick = {() => this.addValue(3)}>3</button>
-            <button className='key' onClick = {() => this.addValue(4)}>4</button>
-            <button className='key' onClick = {() => this.addValue(5)}>5</button>
-            <button className='key' onClick = {() => this.addValue(6)}>6</button>
-            <button className='key' onClick = {() => this.addValue(7)}>7</button>
-            <button className='key' onClick = {() => this.addValue(8)}>8</button>
-            <button className='key' onClick = {() => this.addValue(9)}>9</button>
+            <Button onClick = {() => this.addValue(1)}>1</Button>
+            <Button onClick = {() => this.addValue(2)}>2</Button>
+            <Button onClick = {() => this.addValue(3)}>3</Button>
+            <Button onClick = {() => this.addValue(4)}>4</Button>
+            <Button onClick = {() => this.addValue(5)}>5</Button>
+            <Button onClick = {() => this.addValue(6)}>6</Button>
+            <Button onClick = {() => this.addValue(7)}>7</Button>
+            <Button onClick = {() => this.addValue(8)}>8</Button>
+            <Button onClick = {() => this.addValue(9)}>9</Button>
           </div>
           <div className='functional-buttons'>
             <button className='key key-fn' onClick = {() => this.operations('/')}>/</button>
